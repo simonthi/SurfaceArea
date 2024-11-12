@@ -17,11 +17,11 @@
 	<key>CFBundleVersion</key>
 	<string>100</string> <!-- 123 -->
 	<key>UpdateFeedURL</key>
-	<string>____OnlineUrlToThisPlist____</string>
+	<string>https://github.com/simonthi/SurfaceArea/blob/main/SurfaceArea.glyphsPalette/Contents/Info.plist</string>
 	<key>productPageURL</key>
-	<string>____ProductPageURL____</string>
+	<string>https://github.com/simonthi/SurfaceArea/</string>
 	<key>productReleaseNotes</key>
-	<string>____LatestReleaseNotes____</string>
+	<string>First draft. Limitations: does not yet work with components or smart stuff.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright, Simon Thiefes, 2024</string>
 	<key>NSPrincipalClass</key>
