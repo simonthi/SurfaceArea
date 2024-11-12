@@ -29,7 +29,16 @@ class SurafceArea (PalettePlugin):
 			'de': 'Oberflächeninhalt',
 			'fr': 'Surface',
 		})
-
+		self.error = Glyphs.localize({
+			'en': 'An error occured',
+			'de': 'Es gab einen Fehler',
+			'fr': 'Une erreur s’est produite',
+		})
+		self.errorTips = Glyphs.localize({
+			'en': 'Calculation stopped',
+			'de': 'Berechnung unterbrochen',
+			'fr': 'Calcul interrompu',
+		})
 		# Load .nib dialog (without .extension)
 		self.loadNib('IBdialog', __file__)
 
@@ -45,7 +54,7 @@ class SurafceArea (PalettePlugin):
 	@objc.python_method
 	def update(self, sender):
 
-		text = []
+		text = [""]
 		# Extract font from sender
 		currentTab = sender.object()
 		# We’re in the Edit View
@@ -60,15 +69,15 @@ class SurafceArea (PalettePlugin):
 						for shape in layer.shapes:
 							shp.append(shape)
 					except: 
-						 Message("Cannot calculate surface area", title='Info', OKButton="OK")
+						 Message(self.errorTips, title='Info', OKButton="OK")
 					if (shp != []):
 						try:
 							shpArea = removeOverlap(shp)
 							for shp in shpArea:
 								area += shp.area()
+								text[0] = (self.name + ': %s' % (int(area)))
 						except:
-							Message("Cannot calculate surface area", title='Info', OKButton="OK")
-					text.append('Letter surface area: %s' % (int(area)))
+							text[0] = (self.error + ': %s' % (self.errorTips))
 					
 		# We’re in the Font view
 		else:
